@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Explore NFT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />   
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body{
+            height: 100vh;
+            background-color: #E5C6C6;
+        }
+        /* <----------nav bar-----------> */
+        .navBar{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 80px;
+            width: 100%;
+            border-bottom: 1px solid black;
+            
+        }
+        .navList{
+            display: flex;
+            cursor: pointer;
+        }
+        .navList p{
+            padding: 10px;
+            margin-right: 30px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .profile{
+            height: 40px;
+            width: 40px;
+            background-color: black;
+            border-radius: 50%;
+            border: 1px solid white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .profile i{
+            color: white;
+        }
+        main{
+            display: flex;
+        }
+        /* <--------side nav-----------> */
+        .sideNav{
+            width: 25%;
+            height: 100vh;
+            border-right: 1px solid black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .navSection1, .navSection2, .navSection3{
+            margin: 5px;
+            padding: 5px;
+            
+
+        }
+        .navSection2{
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+        }
+        .sideNav div p{
+            padding: 10px;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        /* <--------Main Content-------------> */
+
+        .main-content-wrapper{
+            margin: 30px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        /* <-------------Nft-Display-----------> */
+        .nft-container{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .nft{
+            width: 300px;
+            height: 300px;
+            background-color: black;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 4px 4px 8px rgba(0,0,0, 0.7);
+        }
+        .image-wrapper{
+            border-radius: 10px 10px 0 0;
+            width: 300px;
+            height: 200px;
+
+        }
+        .image-wrapper img{
+            width: 100%;
+            height: 100%;
+            border-radius: inherit;
+            object-fit: cover;  
+        }
+        .nft-info{
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            margin: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .nft-name h4{
+            font-size: 15px;
+            font-weight: bold;
+            color: #fff;
+        }
+        .price-info{
+            display: flex;
+            justify-content: space-between;
+        }
+        .price-info span{
+            color: rgb(110, 103, 103);
+            font-weight: bolder;
+        }
+        .price-info p{
+            font-weight: bold;
+            color: #fff;
+        }
+        .active{
+            font-weight: bold;
+        }
+        .sideNav .navSection1 p,
+        .sideNav .navSection2 p,
+        .sideNav .navSection3 p{
+            border-radius: 20px;
+            transition: 0.3s ease-in;
+            text-align: center;
+        }
+
+        .sideNav .navSection1 p:hover,
+        .sideNav .navSection2 p:hover,
+        .sideNav .navSection3 p:hover{
+            background-color: rgba(0,0,0, 0.2);
+        }
+
+    </style>
+</head>
+<body>
+     <!-- ----------------- navbar ------------- -->
+    <div class="navBar">
+        <div class="logo">
+            <i class="fa-solid fa-music fa-2x"></i>
+        </div>
+        <div class="navList">
+            <p>Home</p>
+            <p>Connect to wallet</p>
+            <p>About us</p>
+        </div>
+        <div class="profile">
+            <span>
+                <i class="fa fa-user fa-lg" aria-hidden="true"></i>
+            </span>
+        </div>
+    </div>
+    <main>
+         <!-- ----------------- side nav ------------- -->
+        <div class="sideNav">
+            <div class="navSection1">
+                <p class="nav" role="link">Create</p>
+                <p class="active" roll="link">Explore</p>
+                <p >Dashboard</p>
+                <p>Auction</p>
+                <p>Favourites</p>
+            </div>
+            <div class="navSection2">
+                <p class="mynft">My NFT</p>
+                <p>Ethereum</p>
+            </div>
+            <div class="navSection3">
+                <p>Settings</p>
+                <p>Help & FAQ</p>
+            </div>
+        </div>
+        <!-- ----------------- main content ------------- -->
+        <div class="main-content">
+            <div class="main-content-wrapper">
+                <!-- <div class="search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="search" name="SEARCH">
+                </div> -->
+                <div class="nft-container">
+                    <div class="nft" role="link">
+                        <div class="image-wrapper">
+                            <img src="./nft.jpeg" alt="nft">
+                        </div>
+                        <div class="nft-info">
+                            <div class="nft-name">
+                                <h4>Just Chill</h4>
+                            </div>
+                            <div class="price-info">
+                                <p><span>FLOOR</span><br>0.04 ETH</p>
+                                <p><span>24H VOLUME</span><br>120 ETH</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nft" role="link">
+                        <div class="image-wrapper">
+                            <img src="./nft.jpeg" alt="nft">
+                        </div>
+                        <div class="nft-info">
+                            <div class="nft-name">
+                                <h4>Just Chill</h4>
+                            </div>
+                            <div class="price-info">
+                                <p><span>FLOOR</span><br>0.04 ETH</p>
+                                <p><span>24H VOLUME</span><br>120 ETH</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nft" role="link">
+                        <div class="image-wrapper">
+                            <img src="./nft.jpeg" alt="nft">
+                        </div>
+                        <div class="nft-info">
+                            <div class="nft-name">
+                                <h4>Just Chill</h4>
+                            </div>
+                            <div class="price-info">
+                                <p><span>FLOOR</span><br>0.04 ETH</p>
+                                <p><span>24H VOLUME</span><br>120 ETH</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nft" role="link">
+                        <div class="image-wrapper">
+                            <img src="./nft.jpeg" alt="nft">
+                        </div>
+                        <div class="nft-info">
+                            <div class="nft-name">
+                                <h4>Just Chill</h4>
+                            </div>
+                            <div class="price-info">
+                                <p><span>FLOOR</span><br>0.04 ETH</p>
+                                <p><span>24H VOLUME</span><br>120 ETH</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nft" role="link">
+                        <div class="image-wrapper">
+                            <img src="./nft.jpeg" alt="nft">
+                        </div>
+                        <div class="nft-info">
+                            <div class="nft-name">
+                                <h4>Just Chill</h4>
+                            </div>
+                            <div class="price-info">
+                                <p><span>FLOOR</span><br>0.04 ETH</p>
+                                <p><span>24H VOLUME</span><br>120 ETH</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nft" role="link">
+                        <div class="image-wrapper">
+                            <img src="./nft.jpeg" alt="nft">
+                        </div>
+                        <div class="nft-info">
+                            <div class="nft-name">
+                                <h4>Just Chill</h4>
+                            </div>
+                            <div class="price-info">
+                                <p><span>FLOOR</span><br>0.04 ETH</p>
+                                <p><span>24H VOLUME</span><br>120 ETH</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        function navigate(){
+            window.location.href="./buyPage.html"
+        }
+        const divEls = document.querySelectorAll(".nft");
+        for(let i=0; i<divEls.length; i++){
+            divEls[i].addEventListener("click", navigate);
+        }
+        const nav = document.querySelector(".nav");
+        function navigated(){
+            window.location.href="./createItemPage.html";
+        }
+        nav.addEventListener("click", navigated);
+        const mynft = document.querySelector(".mynft");
+        mynft.addEventListener("click", ()=>{
+            window.location.href="./myNFT.html"
+        })
+        
+    </script>
+</body>
+</html>

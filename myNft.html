@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
+    <title>My NFT</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body{
+            height: 100vh;
+            background-color: #E5C6C6;
+        }
+        /* <----------nav bar-----------> */
+        .navBar{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 80px;
+            width: 100%;
+            border-bottom: 1px solid black;
+            
+        }
+        .navList{
+            display: flex;
+            cursor: pointer;
+        }
+        .navList p{
+            padding: 10px;
+            margin-right: 30px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .profile{
+            height: 40px;
+            width: 40px;
+            background-color: black;
+            border-radius: 50%;
+            border: 1px solid white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .profile i{
+            color: white;
+        }
+        main{
+            display: flex;
+        }
+        /* <--------side nav-----------> */
+        .sideNav{
+            width: 200px;
+            height: 1000px;
+            border-right: 1px solid black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .navSection1, .navSection2, .navSection3{
+            margin: 5px;
+            padding: 5px;
+            
+
+        }
+        .navSection2{
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+        }
+        .sideNav div p{
+            padding: 10px;
+            font-size: 17px;
+            cursor: pointer;
+        }
+        /* <--------Main Content-------------> */
+
+        .upload-container-wrapper{
+            margin: 10px 100px;
+            width: 1000px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .display{
+            display: flex;
+            justify-content: center;
+        }
+
+        .nft-container{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .nft{
+            width: 300px;
+            height: 300px;
+            background-color: black;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 4px 4px 8px rgba(0,0,0, 0.7);
+        }
+        .image-wrapper{
+            border-radius: 10px 10px 0 0;
+            width: 300px;
+            height: 200px;
+
+        }
+        .image-wrapper img{
+            width: 100%;
+            height: 100%;
+            border-radius: inherit;
+            object-fit: cover;  
+        }
+        .nft-info{
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            margin: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .nft-name h4{
+            font-size: 15px;
+            font-weight: bold;
+            color: #fff;
+        }
+        .price-info{
+            display: flex;
+            justify-content: space-between;
+        }
+        .price-info span{
+            color: rgb(110, 103, 103);
+            font-weight: bolder;
+        }
+        .price-info p{
+            font-weight: bold;
+            color: #fff;
+        }
+        .active{
+            font-weight: bold;
+        }
+
+        #openseaItems{
+            display: flex;
+            justify-content: space-evenly;
+            margin: 0 auto;
+        }
+
+    </style>
+</head>
+<body class="h-full">
+    
+    <div class="navBar">
+        <div class="logo">
+            <i class="fa-solid fa-music fa-2x"></i>
+        </div>
+        <div class="navList">
+            <p>Home</p>
+            <p>Connect to wallet</p>
+            <p>About us</p>
+        </div>
+        <div class="profile">
+            <span>
+                <i class="fa fa-user fa-lg" aria-hidden="true"></i>
+            </span>
+        </div>
+    </div>
+    <main>
+         <!-- ----------------- side nav ------------- -->
+        <div class="sideNav">
+            <div class="navSection1">
+                <p class="nav" role="link">Create</p>
+                <p class="explore" roll="link">Explore</p>
+                <p >Dashboard</p>
+                <p>Auction</p>
+                <p>Favourites</p>
+            </div>
+            <div class="navSection2">
+                <p class="active" roll="link">My NFT</p>
+                <p>Ethereum</p>
+            </div>
+            <div class="navSection3">
+                <p>Settings</p>
+                <p>Help & FAQ</p>
+            </div>
+        </div>
+        <!-- ----------------- main content ------------- -->
+        <div class="main-content">
+            <div class="main-content-wrapper">
+        <!-- ----------------------------- Connect to MetaMask ----------------------- -->
+                <div class="display">
+                    <div class="flex flex-col space-y-6">
+                        <h3 class="text-center">Listing NFTs for an ETH Address</h3>
+                        <div class="flex flex-col space-y-2">
+                            <button onclick="loginWithEth()" class="
+                                rounded
+                                bg-white
+                                border border-gray-400
+                                hover:bg-gray-100
+                                py-2
+                                px-4
+                                text-gray-600
+                                hover:text-gray-700
+                            ">
+                            Login & Save ETH Address
+                            </button>
+                            <p id="userAddress" class="text-gray-600"></p>
+                            <button id="logoutButton" onclick="logout()" class="hidden text-blue-500 underline">
+                            Logout
+                            </button>
+                        </div>
+                    <button onclick="display()" class="rounded bg-blue-500 hover:bg-blue-700 py-2 px-4 text-white">
+                        Get Your Assets
+                    </button>
+            
+                    </div>
+                </div>
+
+                <div class='w-full flex justify-center'>
+                    <div id='openseaItems' class="w-1/2 grid grid-cols-4 gap-2">
+                    <!-- Opensea items go here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+  <script>
+    window.userAddress = null;
+    window.onload = async () => {
+      // Init Web3 connected to ETH network
+      if (!window.ethereum) {
+        alert("No ETH brower extension detected.");
+      }
+
+      // Load in Localstore key
+      window.userAddress = window.localStorage.getItem("userAddress");
+      showAddress();
+    };
+
+    // Use this function to turn a 42 character ETH address
+    // into an address like 0x345...12345
+    function truncateAddress(address) {
+      if (!address) {
+        return "";
+      }
+      return `${address.substr(0, 5)}...${address.substr(
+        address.length - 5,
+        address.length
+      )}`;
+    }
+
+    // Display or remove the users know address on the frontend
+    function showAddress() {
+      if (!window.userAddress) {
+        document.getElementById("userAddress").innerText = "";
+        document.getElementById("logoutButton").classList.add("hidden");
+        return false;
+      }
+
+      document.getElementById(
+        "userAddress"
+      ).innerText = `ETH Address: ${truncateAddress(window.userAddress)}`;
+      document.getElementById("logoutButton").classList.remove("hidden");
+    }
+
+    // remove stored user address and reset frontend
+    function logout() {
+      window.userAddress = null;
+      window.localStorage.removeItem("userAddress");
+      showAddress();
+    }
+
+    // Login with Web3 via Metamasks window.ethereum library
+    async function loginWithEth() {
+      if (window.ethereum) {
+        try {
+          // We use this since ethereum.enable() is deprecated. This method is not
+          // available in Web3JS - so we call it directly from metamasks' library
+          const selectedAccount = await window.ethereum
+            .request({
+              method: "eth_requestAccounts",
+            })
+            .then((accounts) => accounts[0])
+            .catch(() => {
+              throw Error("No account selected!");
+            });
+          window.userAddress = selectedAccount;
+          window.localStorage.setItem("userAddress", selectedAccount);
+          showAddress();
+        } catch (error) {
+          console.error(error);
+        }
+      } else {
+        alert("No ETH brower extension detected.");
+      }
+    }
+
+    function display() {
+        if(!window.userAddress){ return }
+        const osContainer = document.getElementById('openseaItems')
+        const names = ["Sparkle Girl", "Dance Monkey", "Hello World"]
+        const image_url = ["./nft.jpeg", "https://tse4.mm.bing.net/th?id=OIP.zFJoIjhDqn7Eb7LBlQfARQHaHa&pid=Api&P=0&h=220", "https://tse1.mm.bing.net/th?id=OIP.H5odOWD7fXivGsAAd7PYVQHaF0&pid=Api&P=0&h=220"]
+        const description = ["Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus laudantium vero pariatur quae, recusandae quam eaque officiis ex illum! Perferendis.",
+                            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus laudantium vero pariatur quae, recusandae quam eaque officiis ex illum! Perferendis.",
+                            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus laudantium vero pariatur quae, recusandae quam eaque officiis ex illum! Perferendis."
+                            ]
+        for(let i=0; i<names.length; i++){
+
+            const newElement = document.createElement('div')
+            newElement.innerHTML = `
+            <!-- Opensea listing item-->
+                <a href="./buyPage.html" target="_blank">
+                <div class="nft" role="link">
+                    <div class="image-wrapper">
+                        <img src="${image_url[i]}" alt="nft">
+                    </div>
+                    <div class="nft-info">
+                        <div class="nft-name">
+                            <h4>${names[i]}</h4>
+                        </div>
+                        <div class="price-info">
+                            <p><span>FLOOR</span><br>0.04 ETH</p>
+                            <p><span>24H VOLUME</span><br>120 ETH</p>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            <!-- End Opensea listing item-->
+            `
+            newElement.classList.add('mynft');
+            osContainer.appendChild(newElement)
+        }
+        
+    }
+
+    const mynfts = document.querySelectorAll('.nft');
+    for(let i=0; i<mynfts.length; i++){
+        mynfts[i].addEventListener("click", ()=>{
+            window.location.href="./buyPage.html"
+        })
+    }
+
+    const nav = document.querySelector(".nav");
+    const explore = document.querySelector(".explore");
+
+    nav.addEventListener("click", ()=>{
+        window.location.href="./createItemPage.html";
+    })
+    explore.addEventListener("click", ()=>{
+        window.location.href="./explorePage.html";
+    })
+
+    // async function getOpenseaItems() {
+    //   if (!window.userAddress) { return }
+    //   const osContainer = document.getElementById('openseaItems')
+
+    //   const items = await fetch(`https://api.opensea.io/api/v1/assets?owner=${window.userAddress}&order_direction=desc&offset=0&limit=50`)
+    //     .then((res) => res.json())
+    //     .then((res) => {
+    //       return res.assets
+    //     })
+    //     .catch((e) => {
+    //       console.error(e)
+    //       console.error('Could not talk to OpenSea')
+    //       return null
+    //     })
+
+    //   if (items.length === 0) { return }
+
+    //   items.forEach((nft) => {
+    //     const { name, image_url, description, permalink } = nft
+
+    //     const newElement = document.createElement('div')
+    //     newElement.innerHTML = `
+    //       <!-- Opensea listing item-->
+    //       <a href='${permalink}' target="_blank">
+    //         <div class='flex flex-col'>
+    //           <img
+    //             src='${image_url}'
+    //             class='w-full rounded-lg' />
+    //           <div class='flex-col w-full space-y-1'>
+    //             <p class='text-gray-800 text-lg'>${name}</p>
+    //             <p class='text-gray-500 text-xs word-wrap'>${description ?? ''}</p>
+    //           </div>
+    //         </div>
+    //       </a>
+    //       <!-- End Opensea listing item-->
+    //     `
+
+    //     osContainer.appendChild(newElement)
+    //   })
+    // }
+  </script>
+</body>
+</html>
